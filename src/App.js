@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
 import Dialogs from "./components/Dialogs/Dialogs";
