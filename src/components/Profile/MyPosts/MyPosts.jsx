@@ -4,10 +4,6 @@ import Post from "./Post/Post";
 
 
 const MyPosts = (props) => {
-    // let posts = [
-    //     {id: 1, message: 'Hi', likesCount: 10},
-    //     {id: 2, message: 'How are you?', likesCount: 100},
-    // ]
 
     return (
         <div className={s.postsBlock}>
