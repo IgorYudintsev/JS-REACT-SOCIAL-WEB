@@ -8,20 +8,15 @@ import Header from "./components/Header/Header";
 
 const App = (props) => {
     return (
-        <BrowserRouter>
-            <div className='app-wrapper'>
-                <Header/>
-                <Navbar/>
-                <div class='app-wrapper-content'>
-                    <Route path='/dialogs' render={() =>
-                        <Dialogs state={props.state.dialogsPage}
-                        />}/>
-                    <Route path='/profile' render={() =>
-                        <Profile state={props.state.profilePage}
-                        />}/>
-                </div>
+        <div className='app-wrapper'>
+            <Header/>
+            <Navbar/>
+            <div class='app-wrapper-content'>
+                <Route path='/dialogs' render={() => <Dialogs state={props.state.dialogsPage}/>}/>
+                <Route path='/profile' render={() => <Profile state={props.state.profilePage}/>}/>
             </div>
-        </BrowserRouter>);
+        </div>
+    )
 }
 
 export default App;
