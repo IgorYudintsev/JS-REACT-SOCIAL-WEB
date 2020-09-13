@@ -17,7 +17,6 @@ let DialogsContainer = (props) => {
         <Dialogs updateNewMessageBody={onNewMessageChange}
                  sendMessage={onSendMessageClick}
                  dialogsPage={state}
-
         />
     )
 }
