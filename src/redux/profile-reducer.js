@@ -12,20 +12,30 @@ let initialState= {
 
 const profileReducer = (state=initialState, action) => {
     switch (action.type) {
-        case addPost:
+        case addPost:{
             let newPost = {
                 id: 5,
                 message: state.newPostText,
                 likesCount: 0
             };
-            state.posts.push(newPost);
-            state.newPostText = '';
-            return state;
+            let stateCopy={...state};
+            stateCopy.posts=[...state.posts]
+            stateCopy.posts.push(newPost);
+            stateCopy.newPostText = '';
+            return stateCopy;
+        }
+
         case  updateNewPostText:
-            state.newPostText = action.newText;
-            return state;
+        {
+            let stateCopy={...state};
+            stateCopy.posts=[...state.posts]
+            stateCopy.newPostText = action.newText;
+            return stateCopy;
+        }
+
         default:
-            return state;
+            let stateCopy={...state};
+            return stateCopy;
     }
   }
 
@@ -41,39 +51,3 @@ export let newPostElementCreator = (text) => {
     }
 }
 export default profileReducer;
-
-//==================================
-// const addPost = 'ADD-POST';
-// const updateNewPostText = 'UPDATE-NEW-POST-TEXT';
-//
-// const profileReducer = (state, action) => {
-//     switch (action.type) {
-//         case addPost:
-//             let newPost = {
-//                 id: 5,
-//                 message: state.newPostText,
-//                 likesCount: 0
-//             };
-//             state.posts.push(newPost);
-//             state.newPostText = '';
-//             return state;
-//         case  updateNewPostText:
-//             state.newPostText = action.newText;
-//             return state;
-//         default:
-//             return state;
-//     }
-// }
-//
-// export let addPostActionCreator = () => {
-//     return {
-//         type: addPost
-//     }
-// }
-// export let newPostElementCreator = (text) => {
-//     return {
-//         type: updateNewPostText,
-//         newText: text
-//     }
-// }
-// export default profileReducer;
