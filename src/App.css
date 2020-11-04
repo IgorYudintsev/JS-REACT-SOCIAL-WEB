@@ -11,5 +11,6 @@
 
 .app-wrapper-content {
     grid-area: c;
+    width: 89vw;
     background-color: #002639;
- }
+}
