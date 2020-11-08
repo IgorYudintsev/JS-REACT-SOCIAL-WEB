@@ -16,7 +16,6 @@ import {Provider} from "react-redux";
                 </Provider>
             </BrowserRouter>
         </React.StrictMode>,
-
         document.getElementById('root')
     );
 
