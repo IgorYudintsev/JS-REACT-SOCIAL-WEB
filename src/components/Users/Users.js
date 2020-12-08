@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './Users.module.css'
 import {NavLink} from "react-router-dom";
 import * as axios from "axios";
-// import {toggleFollowingProgress} from "../../redux/users-reducer";
 
 
 export const Users = (props) => {
@@ -11,7 +10,7 @@ export const Users = (props) => {
     for (let i = 1; i <= pageCount; i++) {
         pages.push(i);
     }
-     return (
+    return (
         <div>
             <div className={styles.pagesBlock}>
                 {pages.map(p =>
@@ -34,11 +33,7 @@ export const Users = (props) => {
                 </div>
                 <div>
                     {m.followed
-                        ? <button
-                            disabled={props.followingInProgress.some(id=>id===m.id)}
-                            onClick={() => {
-
-                            props.toggleFollowingProgress(true,m.id);
+                        ? <button onClick={() => {
                             axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${m.id}`,
                                 {
                                     withCredentials: true,
@@ -50,14 +45,11 @@ export const Users = (props) => {
                                     if (response.data.resultCode === 0) {
                                         props.unfollow(m.id);
                                     }
-                                    props.toggleFollowingProgress(false,m.id);
                                 });
                         }} className={styles.margForBtn}>UNFollow</button>
-                        : <button
-                            disabled={props.followingInProgress.some(id=>id===m.id)}
-                            onClick={() => {
+                        : <button onClick={
 
-                                props.toggleFollowingProgress(false,m.id);
+                            () => {
                                 axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${m.id}`, {},
                                     {
                                         withCredentials: true,
@@ -69,10 +61,9 @@ export const Users = (props) => {
                                         if (response.data.resultCode === 0) {
                                             props.follow(m.id);
                                         }
-                                        props.toggleFollowingProgress(false,m.id);
                                     });
                             }} className={styles.margForBtn}>Follow</button>
-                    }
+                    }}
                 </div>
             </span>
                     <span>
