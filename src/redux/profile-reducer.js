@@ -31,7 +31,7 @@ const profileReducer = (state = initialState, action) => {
         case  updateNewPostText: {
             return {
                 ...state,
-                posts: [...state.posts],
+                // posts: [...state.posts],
                 newPostText: action.newText
             };
         }
@@ -55,7 +55,6 @@ export let setUserProfile = (profile) => {
     }
 }
 export let getUserProfile =(userId)=> (dispatch) => {
-
     usersAPI.getprofile(userId).then(response => {
          dispatch(setUserProfile(response.data))
     })

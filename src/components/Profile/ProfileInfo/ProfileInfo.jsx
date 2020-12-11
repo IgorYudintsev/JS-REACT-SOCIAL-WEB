@@ -2,7 +2,6 @@ import React from 'react';
 import s from './ProfileInfo.module.css';
 import {Preloader} from "../../common/Preloader/Preloader";
 import styles from "./ProfileInfo.module.css";
-import {NavLink} from "react-router-dom";
 
 const ProfileInfo = (props) => {
     if (!props.profile) {

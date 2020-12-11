@@ -20,7 +20,7 @@ export const usersAPI= {
        return instance.delete(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`)
     },
     getprofile(userId){
-        return  axios.get(`https://social-network.samuraijs.com/api/1.0/profile/`+userId);
+        return  instance.get(`https://social-network.samuraijs.com/api/1.0/profile/`+userId);
     }
 }
 
