@@ -9,7 +9,7 @@ import Redirect from "react-router-dom/es/Redirect";
 class ProfileContainer extends React.Component {
 
     componentDidMount() {
-        let userId=this.props.match.params.userId;
+        let userId = this.props.match.params.userId;
         if (!userId) {
             userId = 2;
         }
@@ -17,7 +17,6 @@ class ProfileContainer extends React.Component {
     }
 
     render() {
-        if(this.props.isAuth==false)return <Redirect to={'/Login'}/>
         return (
             <div>
                 <Profile {...this.props} profile={this.props.profile}/>
@@ -26,11 +25,16 @@ class ProfileContainer extends React.Component {
     }
 }
 
-let mapStateToProps=(state)=>({
- profile:state.profilePage.profile,
+let AuthRedirectComponent = (props) => {
+    if (props.isAuth == false) return <Redirect to={'/Login'}/>
+    return <ProfileContainer {...props}/>
+}
+
+let mapStateToProps = (state) => ({
+    profile: state.profilePage.profile,
     isAuth: state.auth.isAuth
 })
 
-let WithUrlDataContainerComponent=withRouter(ProfileContainer);
+let WithUrlDataContainerComponent = withRouter(AuthRedirectComponent);
 
-export default connect(mapStateToProps,{getUserProfile}) (WithUrlDataContainerComponent);
+export default connect(mapStateToProps, {getUserProfile})(WithUrlDataContainerComponent);
