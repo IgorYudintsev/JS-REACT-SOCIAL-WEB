@@ -21,7 +21,7 @@ const ProfileInfo = (props) => {
                     : 'https://e7.pngegg.com/pngimages/613/636/png-clipart-computer-icons-user-profile-male-avatar-avatar-heroes-logo.png'}
                      className={styles.picture}
                 />
-                <ProfileStatus status={'Hellow my friends'}/>
+                <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
             </div>
         </div>
     )
