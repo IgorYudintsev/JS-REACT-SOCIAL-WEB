@@ -13,17 +13,27 @@ export class ProfileStatus extends React.Component {
             }
         )
     }
-    deActivateEditeMode  () {
+
+    deActivateEditeMode() {
         this.setState({
                 editMode: false
             }
         )
         this.props.updateStatus(this.state.status)
     }
+
     onStatusChange = (event) => {
         this.setState({
             status: event.currentTarget.value
         });
+    }
+
+    componentDidUpdate = (prevProps, prevState) => {
+        if (prevProps.status !== this.props.status) {
+            this.setState({
+                status: this.props.status
+            })
+        }
     }
 
     render() {
